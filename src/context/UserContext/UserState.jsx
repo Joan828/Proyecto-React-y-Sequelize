@@ -16,7 +16,7 @@ const initialState = {
 export const UserContext  = createContext(initialState);
 
 export const UserProvider = ({children}) => {
-    const [state] = useReducer(UserReducer, initialState);
+    const [state, dispatch] = useReducer(UserReducer, initialState);
   
     const registerUser = async (user) => {
       const res = await axios.post(API_URL + "/create", user);
