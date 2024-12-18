@@ -10,7 +10,7 @@ const user = JSON.parse(localStorage.getItem("user")) || null;
 const initialState = {
   users: [],
   token: token,
-  user: null
+  user: user
 }
 
 export const UserContext  = createContext(initialState);

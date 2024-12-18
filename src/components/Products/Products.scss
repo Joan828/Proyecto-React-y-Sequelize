@@ -1,0 +1,10 @@
+.products-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 3%;
+    
+}
+.ant-card{
+    margin: 15px;
+}
