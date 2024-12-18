@@ -36,16 +36,15 @@ export const UserProvider = ({children}) => {
 
     const getUserInfo = async () => {
       const token = localStorage.getItem("token");
-      const res = await axios.get(API_URL + "/getInfo", {
+      const res = await axios.get(API_URL + "/getUserInfoLogged", {
         headers: {
           Authorization: token,
         },
       });
-      //modifica el estado (en este caso modifica user y lo rellena con la información que llega de la petición)
       dispatch({
         type: "GET_USER_INFO",
-        payload: res.data,
-      });
+        payload: res.data.user,
+      });      
     };
   
     return (
@@ -53,6 +52,7 @@ export const UserProvider = ({children}) => {
         value={{
           users: state.users,
           token: state.token,
+          user: state.user,
           registerUser,
           login,
           getUserInfo

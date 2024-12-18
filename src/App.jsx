@@ -6,6 +6,7 @@ import { ProductProvider } from "./context/ProductContext/ProductState";
 import { UserProvider } from "./context/UserContext/UserState";
 import Login from "./components/Users/Login/Login";
 import Header from "./components/Header/Header";
+import Profile from "./components/Users/Profile/Profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/getAll" element={<Products/>} />
           <Route path="/create" element={<Users/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
       </UserProvider>
       </ProductProvider>
