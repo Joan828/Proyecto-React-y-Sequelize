@@ -20,8 +20,6 @@ export const UserProvider = ({children}) => {
   
     const registerUser = async (user) => {
       const res = await axios.post(API_URL + "/create", user);
-      console.log(res.data);
-
     };
 
     const login = async (user) => {
@@ -35,7 +33,20 @@ export const UserProvider = ({children}) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
     }
-  
+
+    const getUserInfo = async () => {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(API_URL + "/getInfo", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      //modifica el estado (en este caso modifica user y lo rellena con la información que llega de la petición)
+      dispatch({
+        type: "GET_USER_INFO",
+        payload: res.data,
+      });
+    };
   
     return (
       <UserContext.Provider
@@ -43,7 +54,8 @@ export const UserProvider = ({children}) => {
           users: state.users,
           token: state.token,
           registerUser,
-          login
+          login,
+          getUserInfo
         }}
       >
         {children}
