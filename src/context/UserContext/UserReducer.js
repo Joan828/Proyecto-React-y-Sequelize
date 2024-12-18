@@ -5,6 +5,12 @@ const users = (state, action) => {
           ...state,
           users: action.payload,
         };
+        case "LOGIN":
+        return {
+          ...state,
+          token: action.payload.token,
+          user: action.payload.user,
+        };
       default:
         return state;
     }

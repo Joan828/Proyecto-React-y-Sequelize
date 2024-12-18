@@ -6,6 +6,7 @@ const initialState = {
   products: []
 }
 
+const API_URL = "http://localhost:3000/products"
 
 export const ProductContext  = createContext(initialState);
 
@@ -13,7 +14,7 @@ export const ProductProvider = ({children}) => {
     const [state, dispatch] = useReducer(ProductReducer, initialState);
   
     const getProducts = async () => {
-      const res = await axios.get("http://localhost:3000/products/getAll");
+      const res = await axios.get(API_URL + "/getAll");
       console.log(res.data);
       
       // setNews(res.data.results)
