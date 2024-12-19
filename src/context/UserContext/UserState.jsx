@@ -46,6 +46,21 @@ export const UserProvider = ({children}) => {
         payload: res.data.user,
       });      
     };
+
+    const logout = async (user) => {
+      const token = localStorage.getItem("token");
+      const res = await axios.delete(API_URL + "/logout", {
+        headers:{
+          Authorization:token
+        }
+      })
+      dispatch({
+        type:"LOGOUT"
+      })
+      if(res.data){
+        localStorage.clear()
+      }
+    };
   
     return (
       <UserContext.Provider
@@ -55,7 +70,8 @@ export const UserProvider = ({children}) => {
           user: state.user,
           registerUser,
           login,
-          getUserInfo
+          getUserInfo,
+          logout
         }}
       >
         {children}
