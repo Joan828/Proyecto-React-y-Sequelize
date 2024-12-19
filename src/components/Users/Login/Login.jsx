@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Button, Form, Input } from 'antd';
 import { UserContext } from '../../../context/UserContext/UserState';
-
+import './Login.scss'
 
 const Login = () => {
     const {login} = useContext(UserContext)
@@ -11,6 +11,8 @@ const Login = () => {
     };
 
     return (
+        <div className='userForm'>
+            <div className='title'>Inicio de sesión</div>
         <Form
     name="basic"
     labelCol={{
@@ -56,11 +58,11 @@ const Login = () => {
 
     <Form.Item label={null}>
       <Button type="primary" htmlType="submit">
-        Enviar
+        Iniciar sesión
       </Button>
     </Form.Item>
   </Form>
-
+  </div>
     )
 }
 

@@ -6,8 +6,8 @@ import './Header.scss'
 
 const Header = () => {
     const {user, logout} = useContext(UserContext)
-
     const navigate = useNavigate();
+    
     const logoutUser = () => {
         //desloguee el usuario
         logout();

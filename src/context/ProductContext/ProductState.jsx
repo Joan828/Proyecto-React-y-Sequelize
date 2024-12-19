@@ -3,7 +3,8 @@ import ProductReducer from "./ProductReducer";
 import axios from "axios";
 
 const initialState = {
-  products: []
+  products: [],
+  cart: []
 }
 
 const API_URL = "http://localhost:3000/products"
@@ -25,11 +26,19 @@ export const ProductProvider = ({children}) => {
       });
     };
   
+    const addCart =(product)=>{
+      dispatch({
+          type: "ADD_CART",
+          payload: product
+      })
+    }
+
     return (
       <ProductContext.Provider
         value={{
           products: state.products,
           getProducts,
+          addCart
         }}
       >
         {children}
