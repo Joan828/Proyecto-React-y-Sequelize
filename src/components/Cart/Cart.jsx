@@ -3,6 +3,7 @@ import { ProductContext } from '../../context/ProductContext/ProductState'
 import { Card, Button, Empty } from 'antd';
 import './Cart.scss'
 import { DeleteOutlined } from "@ant-design/icons";
+import OrderService from '../../services/OrderService';
 
 const { Meta } = Card;
 
@@ -26,7 +27,10 @@ const Cart = () => {
                 </Card>)
     })}
     <Button onClick={clearCart}>Limpiar Carrito<DeleteOutlined/></Button>
-    <Button>Hacer pedido</Button>
+    <Button onClick={()=>{
+        OrderService.createOrder(cart)
+        clearCart()
+        }}>Hacer pedido</Button>
     </div>
   )
 }
