@@ -16,9 +16,7 @@ const Header = () => {
     },[cart])
 
     const logoutUser = () => {
-        //desloguee el usuario
         logout();
-        //me redirija a login
         navigate("/login");
     };
 
@@ -28,10 +26,12 @@ const Header = () => {
             <Link to="/getAll"><Button>Lista de coches</Button></Link>
         </div>
         {user ? (
-            <div className='rightElements'>   
-            <Link to='/cart'>Carrito <Badge count={cart.length}>
-              <ShoppingCartOutlined />
-            </Badge>{" "}</Link>         
+            <div className='rightElements'> 
+            <Button>
+                <Link to='/cart'>Carrito
+                <ShoppingCartOutlined />
+                <Badge count={cart.length} className='badge'></Badge></Link> 
+            </Button>
             <Link to="/profile"><Space size={16} wrap>
                 <Avatar>{user.name[0]}</Avatar>
                 </Space>
