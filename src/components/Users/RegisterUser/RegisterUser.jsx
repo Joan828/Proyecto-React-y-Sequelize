@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../../context/UserContext/UserState";
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, DatePicker } from 'antd';
 
 const RegisterUser = () => {
   const [data, setData] = useState({
@@ -10,45 +10,12 @@ const RegisterUser = () => {
   });
   const {registerUser} = useContext(UserContext)
 
-  const handleSubmit =(e)=>{
-    e.preventDefault()
+  const handleSubmit =(data)=>{
     console.log("enviado",data);
     registerUser(data)
   }
-  const handleInputChange = (event) => {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    });
-  };
 
   return (
-    <div>
-      <form>
-        <input
-          type="text"
-          placeholder="Inserta tu nombre"
-          name="name"
-          value={data.name}
-          onChange={handleInputChange}
-        /><br/>
-        <input
-          type="text"
-          placeholder="Inserta tu correo"
-          name="email"
-          value={data.email}
-          onChange={handleInputChange}
-        /><br/>
-        <input
-          type="password"
-          placeholder="Inserta tu contraseña"
-          name="password"
-          value={data.password}
-          onChange={handleInputChange}
-        /><br/>
-        <button onClick={handleSubmit}>Enviar</button>
-      </form>
-      <div>
       <Form
           name="basic"
           labelCol={{
@@ -64,6 +31,7 @@ const RegisterUser = () => {
             remember: true,
           }}
           autoComplete="off"
+          onFinish={handleSubmit}
         >
          <Form.Item
             label="Nombre"
@@ -110,8 +78,6 @@ const RegisterUser = () => {
             </Button>
           </Form.Item>
         </Form>
-        </div>
-    </div>
   );
 };
 
