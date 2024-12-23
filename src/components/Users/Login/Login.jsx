@@ -1,13 +1,17 @@
 import React, { useContext } from 'react'
 import { Button, Form, Input } from 'antd';
 import { UserContext } from '../../../context/UserContext/UserState';
+import { useNavigate } from 'react-router-dom'
 import './Login.scss'
 
 const Login = () => {
     const {login} = useContext(UserContext)
+    const navigate = useNavigate();
+    
     const onFinish = (values) => {
         console.log('Success:', values);
         login(values)
+        navigate("/getAll");
     };
 
     return (

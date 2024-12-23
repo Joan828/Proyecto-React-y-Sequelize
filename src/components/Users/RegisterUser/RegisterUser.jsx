@@ -1,18 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../../context/UserContext/UserState";
-import { Button, Form, Input, DatePicker } from 'antd';
+import { Button, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom'
+
 
 const RegisterUser = () => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
-  const {registerUser} = useContext(UserContext)
+  const {registerUser, login} = useContext(UserContext)
+  const navigate = useNavigate();
 
-  const handleSubmit =(data)=>{
-    console.log("enviado",data);
-    registerUser(data)
+  const handleSubmit = async (data)=>{
+    //Aquí me ha tocado ponerle un await a la función registerUser, porqué sino intenta hacer el login sin que le haya dado tiempo a registrar al usuario y da error
+    await registerUser(data)    
+    //data tiene tres campos(name, email y password), pero para hacer login solo le pasamos dos, así que para que no dé errorcreamos un nuevo objeto con solo los dos campos que se necesitan
+    const dataForLogin = {
+      email: data.email, 
+      password: data.password}
+      
+    login(dataForLogin)
+    navigate("/getAll");
   }
 
   return (

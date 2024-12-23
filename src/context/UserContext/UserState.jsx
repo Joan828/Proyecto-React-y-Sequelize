@@ -23,6 +23,7 @@ export const UserProvider = ({children}) => {
     };
 
     const login = async (user) => {
+      console.log("User cuando me registro: ",user);      
       const res = await axios.post(API_URL + "/login", user);
       dispatch({
         type: "LOGIN",
