@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext/UserState'
-import { Avatar, Space, Button, Badge } from "antd";
+import { Avatar, Space, Button, Badge, Dropdown } from "antd";
 import './Header.scss'
 import { ProductContext } from '../../context/ProductContext/ProductState';
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, DownOutlined } from "@ant-design/icons";
 
 const Header = () => {
     const {user, logout} = useContext(UserContext)
@@ -20,6 +20,34 @@ const Header = () => {
         navigate("/login");
     };
 
+    const items = [
+        {
+          label: (
+            <Link to="/profile">
+                Perfil
+            </Link>
+          ),
+          key: '0',
+        },
+        {
+          label: (
+            <Link to="/profile">
+                Ver información
+            </Link>
+          ),
+          key: '1',
+        },
+        {
+          type: 'divider',
+        },
+        {
+          label: (
+            <Button color="default" variant="solid" onClick={logoutUser}>Cerrar Sesión</Button>
+          ),
+          key: '3',
+        },
+      ];
+
   return (
     <div className='header'>
         <div className='leftElements'>
@@ -32,11 +60,26 @@ const Header = () => {
                 <ShoppingCartOutlined />
                 <Badge count={cart.length} className='badge'></Badge></Link> 
             </Button>
-            <Link to="/profile"><Space size={16} wrap>
-                <Avatar>{user.name[0]}</Avatar>
+
+            <Space direction="vertical">
+            <Space wrap>
+            <Dropdown
+                menu={{
+                    items,
+                  }}
+                placement="bottomRight"
+                trigger={['click']}>
+                <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                    <Space size={16} wrap>
+                        <Avatar>{user.name[0].toUpperCase()}</Avatar>
+                    </Space>
                 </Space>
-            </Link>
-            <Button color="default" variant="solid" onClick={logoutUser}>Cerrar Sesión</Button>
+                </a>
+            </Dropdown>
+            </Space>
+            </Space>
+            
         </div>
         )
         :

@@ -24,7 +24,7 @@ const Products = () => {
                     cover={<img alt="img coche" src="https://d1gl66oyi6i593.cloudfront.net/wp-content/uploads/2020/07/venta-honda-nsx-type-r-1993.jpg" />}
                   >
                     <Meta title={product.name} description={"Precio: "+product.price + "€"} />
-                    <Button onClick={()=>addCart(product)}>Comprar</Button>
+                    <Button type="primary" onClick={()=>addCart(product)}>Comprar</Button>
                 </Card>
             )
         })}
