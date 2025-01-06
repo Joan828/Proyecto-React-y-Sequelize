@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import Profile from "./components/Users/Profile/Profile";
 import Cart from "./components/Cart/Cart";
 import Orders from "./components/Users/Orders/Orders";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/logout" element={<Profile/>} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/orders" element={<Orders/>} />
+          <Route path="/home" element={<Home/>} />
         </Routes>
       </UserProvider>
       </ProductProvider>

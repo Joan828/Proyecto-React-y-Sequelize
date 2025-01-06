@@ -51,6 +51,7 @@ const Header = () => {
   return (
     <div className='header'>
         <div className='leftElements'>
+            <Link to="/home"><Button>Home</Button></Link>
             <Link to="/getAll"><Button>Lista de coches</Button></Link>
         </div>
         {user ? (
