@@ -9,7 +9,6 @@ const Login = () => {
     const navigate = useNavigate();
     
     const onFinish = (values) => {
-        console.log('Success:', values);
         login(values)
         navigate("/getAll");
     };

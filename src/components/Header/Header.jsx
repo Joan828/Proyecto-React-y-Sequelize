@@ -31,8 +31,8 @@ const Header = () => {
         },
         {
           label: (
-            <Link to="/profile">
-                Ver información
+            <Link to="/orders">
+                Ver mis pedidos
             </Link>
           ),
           key: '1',

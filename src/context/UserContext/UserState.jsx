@@ -42,6 +42,7 @@ export const UserProvider = ({children}) => {
           Authorization: token,
         },
       });
+      console.log("Usuario cuando lo trae del back",res.data.user.Orders);
       dispatch({
         type: "GET_USER_INFO",
         payload: res.data.user,
