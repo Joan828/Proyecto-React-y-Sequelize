@@ -21,6 +21,8 @@ const RegisterUser = () => {
   }
 
   return (
+    <div className='userForm'>
+            <div className='title'>Registrarse</div>
       <Form
           name="basic"
           labelCol={{
@@ -83,6 +85,7 @@ const RegisterUser = () => {
             </Button>
           </Form.Item>
         </Form>
+        </div>
   );
 };
 
