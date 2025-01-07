@@ -31,7 +31,7 @@ const Orders = () => {
                 </Card>
             )
         })} */}
-        Usuario: {user.name }
+        Trabajando en ello
     </div>
     
   )
